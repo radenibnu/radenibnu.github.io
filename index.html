@@ -2,79 +2,56 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Raden Ibnu - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raden Ibnu - Programmer & Embedded Developer</title>
   <style>
-    :root {
-      --bg: #0d1117;
-      --text: #c9d1d9;
-      --card: #161b22;
-      --blue: #58a6ff;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      background: #f5f5f5;
+      color: #333;
       padding: 2rem;
     }
-
     .container {
-      max-width: 960px;
-      margin: auto;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
     h1 {
-      font-size: 2.2rem;
-      color: var(--blue);
+      font-size: 2rem;
+      color: #1e90ff;
       margin-bottom: 0.5rem;
     }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: #8b949e;
-      margin-bottom: 2rem;
+    p.subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 1.5rem;
     }
-
-    section {
-      margin-bottom: 3rem;
+    h2 {
+      margin-top: 2rem;
+      color: #444;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.25rem;
     }
-
-    .card {
-      background: var(--card);
-      padding: 1rem;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
+    ul {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
     }
-
-    .card:hover {
-      transform: translateY(-3px);
-    }
-
     a {
-      color: var(--blue);
+      color: #1e90ff;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
     .footer {
-      text-align: center;
+      margin-top: 3rem;
       font-size: 0.9rem;
-      color: #8b949e;
-      margin-top: 4rem;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
+      text-align: center;
+      color: #888;
     }
   </style>
 </head>
@@ -83,54 +60,26 @@
     <h1>Raden Ibnu</h1>
     <p class="subtitle">Programmer & Embedded Systems Developer</p>
 
-    <section>
-      <h2>Tentang Saya</h2>
-      <p>Developer yang fokus di software dan embedded systems. Mulai dari web apps pakai Laravel, hingga projek IoT dengan ESP32/STM32. Passion gue di sistem yang efisien, clean, dan impactful.</p>
-    </section>
+    <h2>Tentang Saya</h2>
+    <p>Developer yang suka ngulik software dan hardware. Mulai dari web development sampai embedded systems (ESP32, Arduino dll). Fokus gue sekarang di pengembangan sistem yang efisien dan scalable, baik itu backend maupun firmware level.</p>
 
-    <section>
-      <h2>Project Publik di GitHub</h2>
-      <div id="projects">
-        <p>Loading project dari GitHub...</p>
-      </div>
-    </section>
+    <h2>Project Unggulan</h2>
+    <ul>
+      <li><a href="#" target="_blank">Sistem Manajemen Bengkel Otomatis</a> - Laravel, PostgreSQL, Realtime Pusher</li>
+      <li><a href="#" target="_blank">Monitoring IoT via Web Dashboard</a> - ESP32 + MQTT + Node.js</li>
+      <li><a href="#" target="_blank">Aplikasi Booking Ruangan Meeting</a> - Flutter + Firebase</li>
+    </ul>
 
-    <section>
-      <h2>Kontak</h2>
-      <ul>
-        <li>Email: <a href="mailto:radenibnuqc@gmail.com">radenibnuqc@gmail.com</a></li>
-        <li>GitHub: <a href="https://github.com/radenibnu" target="_blank">github.com/radenibnu</a></li>
-      </ul>
-    </section>
+    <h2>Kontak</h2>
+    <ul>
+      <li>Email: <a href="mailto:radenibnu@example.com">radenibnu@example.com</a></li>
+      <li>GitHub: <a href="https://github.com/radenibnu" target="_blank">github.com/radenibnu</a></li>
+      <li>LinkedIn (opsional)</li>
+    </ul>
 
-    <div class="footer">&copy; 2025 Raden Ibnu — 😄</div>
+    <div class="footer">
+      &copy; 2025 Raden Ibnu. Dibuat dengan 💻 dan semangat ngoding.
+    </div>
   </div>
-
-  <script>
-    async function loadProjects() {
-      const container = document.getElementById('projects');
-      try {
-        const res = await fetch('https://api.github.com/users/radenibnu/repos?sort=updated&per_page=6');
-        const data = await res.json();
-
-        if (!Array.isArray(data)) throw new Error('Error ambil data');
-
-        container.innerHTML = '';
-        data.forEach(repo => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-            <p>${repo.description || 'No description'}</p>
-          `;
-          container.appendChild(card);
-        });
-      } catch (err) {
-        container.innerHTML = '<p>Gagal load project. Coba refresh.</p>';
-      }
-    }
-
-    loadProjects();
-  </script>
 </body>
 </html>
